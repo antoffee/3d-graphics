@@ -1,0 +1,1 @@
+export { FullScreenWrapper } from './FullScreenWrapper';

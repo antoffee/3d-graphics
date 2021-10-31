@@ -1,19 +1,32 @@
 import React from 'react';
-import { Canvas } from '@react-three/fiber';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { Boxes } from 'containers/Boxes';
 
-import { Box } from 'components/Box';
+import { FullScreenWrapper } from 'components/FullScreenWrapper';
 
 export const App: React.FC = () => {
     return (
-        <div style={{ height: '100vh' }}>
-            <Canvas>
-                <ambientLight />
-                <pointLight position={[10, 10, 10]} />
-                <Box position={[0, 0, 0]} />
-                <Box position={[10, 0, -10]} />
-                <Box position={[-5, 0, 1]} />
-            </Canvas>
-            ,
-        </div>
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">HomePage</Link>
+                        </li>
+                        <li>
+                            <Link to="/boxes">Boxes example</Link>
+                        </li>
+                    </ul>
+                </nav>
+
+                <Switch>
+                    <Route path="/boxes">
+                        <FullScreenWrapper>
+                            <Boxes />
+                        </FullScreenWrapper>
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
     );
 };
